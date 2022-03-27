@@ -1,7 +1,8 @@
 Searching Feature
 Pagination
 Accounts adding Feature
-Date Editing Feature
 Entry Detail View
+
+No Future Date
 
 Filtering and Searching thorugh tags

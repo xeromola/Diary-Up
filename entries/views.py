@@ -27,7 +27,7 @@ class EntryListView(ListView):
     model = Entry
     context_object_name = 'entries'
     template_name = "entries/entry_list.html"
-    ordering = ['-time_created']
+    ordering = ['-date_created', '-time_created']
 
 
 class EntryUpdateView(View):
@@ -54,7 +54,6 @@ def EntryDetailView(request, pk):
 
 def EntryDeleteView(request, pk):
     entry = Entry.objects.get(pk=pk)
-    print(pk)
     entry.delete()
     return redirect('list-entries')
 

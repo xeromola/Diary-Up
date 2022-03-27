@@ -5,5 +5,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-outline-primary">Save</button>
+    <a href="{% url 'list-entries' %}" class="btn btn-outline-danger">Cancel</a>
 </form>
+
 {% endblock content %} 
