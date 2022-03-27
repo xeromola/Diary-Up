@@ -28,6 +28,7 @@ class EntryListView(ListView):
     context_object_name = 'entries'
     template_name = "entries/entry_list.html"
     ordering = ['-date_created', '-time_created']
+    paginate_by = 3
 
 
 class EntryUpdateView(View):
