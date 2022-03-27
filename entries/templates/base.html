@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDiary</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <script src="https://kit.fontawesome.com/27bcdab422.js" crossorigin="anonymous"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'list-entries' %}"><h2>MyDiary</h2></a>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          {% block nav-content %}{% endblock nav-content %}
+        </ul>
+        <form class="d-flex">
+          <div class="input-group m-2">
+            <input type="search" class="form-control" placeholder="Search" aria-label="Search">
+            <div class="input-group-append">
+              <button class="btn btn-success" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+    </div>
+  </nav>
+
+
+  {% block content %}
+  {% endblock content %}
+
+</body>
+</html>

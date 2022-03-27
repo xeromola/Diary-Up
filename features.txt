@@ -1,0 +1,8 @@
+Improve UI
+Searching Feature
+Pagination
+Accounts adding Feature
+Date Adding Feature
+Image Adding Feature
+Font Select Feature
+Entry Detail View
