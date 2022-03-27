@@ -10,5 +10,5 @@ class EntryForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Title'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter Your Content here', 'id': 'entryArea'}),
+            'content': forms.Textarea(attrs={'class': 'form-control', 'id': 'editorArea', 'placeholder': 'Enter Your Content here', 'id': 'entryArea'}),
         }

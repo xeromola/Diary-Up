@@ -3,7 +3,7 @@ from django.db import models
 
 class Entry(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField(blank=True)
     date_created = models.DateField(auto_now_add=True)
     time_created = models.DateTimeField(auto_now_add=True, null=True)
 

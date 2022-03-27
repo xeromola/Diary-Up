@@ -1,8 +1,7 @@
-Improve UI
 Searching Feature
 Pagination
 Accounts adding Feature
-Date Adding Feature
-Image Adding Feature
-Font Select Feature
+Date Editing Feature
 Entry Detail View
+
+Filtering and Searching thorugh tags
