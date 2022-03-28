@@ -1,8 +1,7 @@
 Searching Feature
-Pagination
 Accounts adding Feature
 Entry Detail View
 
-No Future Date
+Small Details
 
 Filtering and Searching thorugh tags

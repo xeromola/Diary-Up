@@ -25,7 +25,6 @@
     <div class="container-fluid">
       <a class="navbar-brand px-3" href="{% url 'list-entries' %}"><h2>MyDiary</h2></a>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          {% block nav-content %}{% endblock nav-content %}
         </ul>
         <form class="d-flex">
           <div class="input-group m-2">
@@ -41,6 +40,9 @@
 
   {% block content %}
   {% endblock content %}
+
+  {% block includes %}
+  {% endblock includes %}
 
 </body>
 </html>

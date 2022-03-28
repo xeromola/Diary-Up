@@ -1,10 +1,5 @@
 {% extends "base.html" %}
-
-{% block nav-content %}
-<div class="m-2">
-    <a href="{% url 'new-entry' %}" class="btn btn-primary rounded-pill"> <i class="fa-solid fa-plus"></i>  Create Entry</a>
-</div>
-{% endblock nav-content %}
+{% load static %}
 
 {% block content %}
 
@@ -23,7 +18,10 @@
         <h4>
             {{ entry.title }}
         </h4>
-      <p class="card-text">{{ entry.content|safe }}</p>
+      <p class="card-text entry-element">
+        {{ entry.content|safe }}
+        <a href="{% url 'detail-entry' entry.pk %}">...Read more</a>
+      </p>
     </div>
 </div>
 
@@ -45,6 +43,10 @@
 
 
 {% endfor %}
+
+<div class="m-2">
+  <a href="{% url 'new-entry' %}" class="btn btn-primary rounded-pill position-fixed bottom-0 end-0 m-4 p-3"> <i class="fa-solid fa-plus"></i>  Create Entry</a>
+</div>
 
 
   {% if is_paginated %}
@@ -83,3 +85,8 @@
 
 
 {% endblock content %}
+
+
+{% block includes %}
+<script src="{% static 'js/limitLength.js' %}"></script>
+{% endblock includes %}
