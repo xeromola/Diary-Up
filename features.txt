@@ -1,7 +1,4 @@
 Searching Feature
 Accounts adding Feature
-Entry Detail View
-
-Small Details
 
 Filtering and Searching thorugh tags
