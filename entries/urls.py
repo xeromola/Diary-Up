@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include, re_path
 from .views import (
     EntryCreateView,
     EntryListView,
@@ -8,6 +8,7 @@ from .views import (
 )
 
 urlpatterns = [
+    re_path(r"^accounts/", include("django.contrib.auth.urls")),
     path("new-entry", EntryCreateView.as_view(), name="new-entry"),
     path("", EntryListView.as_view(), name="list-entries"),
     path("delete-entry/<int:pk>", EntryDeleteView, name="delete-entry"),

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="card m-5">
+        <h5 class="card-header">Login</h5>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="id_username" class="form-label">Username:</label>
+                  {% render_field form.username placeholder=form.username.label class+="form-control" %}
+                </div>
+                <div class="mb-3">
+                  <label for="id_password" class="form-label">Password:</label>
+                  {% render_field form.password placeholder=form.password.label class+="form-control" %}
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Keep me Logged In</label>
+                </div>
+                <input type="submit" value="Login" class="btn btn-primary">
+              </form>
+        </div>
+      </div>
+{% endblock content %}
