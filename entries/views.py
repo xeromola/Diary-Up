@@ -3,16 +3,13 @@ from .forms import EntryForm
 from .models import Entry
 from django.views.generic import (
     View,
-    ListView,
-    DeleteView
+    ListView
 )
 
 
 class EntryCreateView(View):
     def get(self, request, *args, **kwargs):
-        form = EntryForm()
-        context = {'form': form}
-        return render(request, "entries/entry_create.html", context=context)
+        return render(request, "entries/entry_create.html", {'form': EntryForm()})
 
     def post(self, request, *args, **kwargs):
         form = EntryForm(request.POST or None)

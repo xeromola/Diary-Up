@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<h2>Register</h2>
+
+<div class="card m-5">
+    <h5 class="card-header">Register</h5>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username:</label>
+                {% render_field form.username placeholder=form.username.label class+="form-control" %}
+            </div>
+            <div class="mb-3">
+              <label for="id_email" class="form-label">E-mail:</label>
+              {% render_field form.email placeholder=form.email.label class+="form-control" %}
+            </div>
+            <div class="mb-3">
+              <label for="id_password" class="form-label">Password:</label>
+              {% render_field form.password1 placeholder=form.password1.label class+="form-control" %}
+            </div>
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Confirm Password:</label>
+                {% render_field form.password2 placeholder=form.password2.label class+="form-control" %}
+            </div>
+            <input type="submit" value="Register" class="btn btn-primary">
+          </form>
+    </div>
+  </div>
+
+<a href="{% url 'login' %}">Back to login</a>
+{% endblock %}
