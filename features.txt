@@ -1,4 +1,0 @@
-Searching Feature
-Accounts adding Feature
-
-Filtering and Searching thorugh tags

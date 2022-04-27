@@ -5,6 +5,7 @@ from django.views.generic import (
     View,
     ListView
 )
+from django.contrib.auth.decorators import login_required
 
 
 class EntryCreateView(View):
@@ -45,19 +46,14 @@ class EntryUpdateView(View):
         return render(request, "entries/entry_create.html", {'form': form})
 
 
+@login_required
 def EntryDetailView(request, pk):
     entry = Entry.objects.get(pk=pk)
     return render(request, "entries/entry_detail.html", {'entry': entry})
 
 
+@login_required
 def EntryDeleteView(request, pk):
     entry = Entry.objects.get(pk=pk)
     entry.delete()
     return redirect('list-entries')
-
-
-def EntryDetailView(request, pk):
-    context = {}
-    entry = Entry.objects.get(pk=pk)
-    context['entry'] = entry
-    return render(request, "entries/entry_detail.html", context=context)

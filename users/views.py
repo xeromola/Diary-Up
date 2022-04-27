@@ -16,4 +16,4 @@ class RegisterView(View):
             login(request, user)
             return redirect('list-entries')
 
-        return render(request, "registration/register.html", {"form": CustomUserForm})
+        return render(request, "registration/register.html", {"form": form})

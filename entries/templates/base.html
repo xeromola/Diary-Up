@@ -24,27 +24,29 @@
       <a class="navbar-brand px-3" href="{% url 'list-entries' %}"><h2>MyDiary</h2></a>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         </ul>
-        <form class="d-flex">
-          <div class="input-group m-2">
+        <div class="d-flex">
+          <div class="m-2">
             {% if user.is_authenticated %}
-              <a href=" {% url 'logout' %} ">Logout</a>
-            {% else %}
-              <a href=" {% url 'login' %}  ">Login</a>
+              <div class="dropdown">
+                <a class="btn btn-light dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  Options
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="{% url 'new-entry' %}">Create New Entry</a></li>
+                  <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+              </div>
+              {% comment %} <a href=" {% url 'logout' %} ">Logout</a> {% endcomment %}
             {% endif %}
-            <input type="search" class="form-control" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-success" type="submit">Search</button>
-            </div>
           </div>
-        </form>
+        </div>
     </div>
   </nav>
 
 
   {% block content %}
   {% endblock content %}
-
-  {% block includes %}
-  {% endblock includes %}
 </body>
 </html>

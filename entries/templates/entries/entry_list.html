@@ -10,7 +10,8 @@
             <h4>{{ entry.date_created }}</h4>
         </div>
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="{% url 'update-entry' entry.pk %}" class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></i></a>
+            <a href="{% url 'detail-entry' entry.pk %}" class="btn btn-outline-dark"><i class="fa-solid fa-up-right-from-square"></i></a>
+            <a href="{% url 'update-entry' entry.pk %}" class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></a>
             <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#deleteConformation{{entry.pk}}"><i class="fa-solid fa-trash-can"></i></button>
           </div>
     </div>
@@ -20,7 +21,6 @@
         </h4>
       <p class="card-text entry-element">
         {{ entry.content|safe }}
-        <a href="{% url 'detail-entry' entry.pk %}">...Read more</a>
       </p>
     </div>
 </div>
@@ -85,8 +85,3 @@
 
 
 {% endblock content %}
-
-
-{% block includes %}
-<script src="{% static 'js/limitLength.js' %}"></script>
-{% endblock includes %}
