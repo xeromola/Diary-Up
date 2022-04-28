@@ -15,6 +15,7 @@ class EntryCreateView(View):
     def post(self, request, *args, **kwargs):
         form = EntryForm(request.POST or None)
         if form.is_valid():
+            form.instance.user_id = request.user.id
             form.save()
             return redirect('list-entries')
 
