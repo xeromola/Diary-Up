@@ -25,8 +25,12 @@ class EntryListView(ListView):
     model = Entry
     context_object_name = 'entries'
     template_name = "entries/entry_list.html"
-    ordering = ['-date_created', '-time_created']
     paginate_by = 3
+
+    def get_queryset(self):
+        return Entry.objects.filter(
+            user=self.request.user
+        ).order_by('-date_created', '-time_created')
 
 
 class EntryUpdateView(View):
@@ -49,6 +53,8 @@ class EntryUpdateView(View):
 @login_required
 def EntryDetailView(request, pk):
     entry = Entry.objects.get(pk=pk)
+    if entry.user != request.user:
+        return redirect('list-entries')
     return render(request, "entries/entry_detail.html", {'entry': entry})
 
 
