@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 
 class Entry(models.Model):
@@ -9,6 +10,7 @@ class Entry(models.Model):
     content = models.TextField(blank=True)
     date_created = models.DateField()
     time_created = models.DateTimeField(auto_now_add=True, null=True)
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title

@@ -34,6 +34,18 @@ class EntryListView(ListView):
         ).order_by('-date_created', '-time_created')
 
 
+class TagListView(ListView):
+    model = Entry
+    context_object_name = 'entries'
+    template_name = "entries/entry_list.html"
+    paginate_by = 3
+
+    def get_queryset(self):
+        return Entry.objects.filter(
+            tags__slug=self.kwargs.get('tag_slug')
+        ).order_by('-date_created', '-time_created')
+
+
 class EntryUpdateView(View):
     def get(self, request, *args, **kwargs):
         element = Entry.objects.get(pk=kwargs['pk'])

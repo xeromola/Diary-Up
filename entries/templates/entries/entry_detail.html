@@ -4,42 +4,9 @@
 {% block content %}
 
 
-<div class="card m-5">
-    <div class="card-header card-title d-flex justify-content-between">
-      <div>
-          <h4>{{ entry.date_created }}</h4>
-      </div>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <a href="{% url 'update-entry' entry.pk %}" class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></i></a>
-        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#deleteConformation{{entry.pk}}"><i class="fa-solid fa-trash-can"></i></button>
-      </div>
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">
-          {{ entry.title }}
-      </h5>
-      <p class="card-text">
-          {{ entry.content|safe }}
-      </p>
-    </div>
-  </div>
-
-    <!-- Modal for Delete Confirmation -->
-    <div class="modal fade" id="deleteConformation{{entry.pk}}" tabindex="-1" aria-labelledby="deleteConformationLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-body">
-              <h5 class="modal-title" id="deleteConformationLabel">Are you sure you want to Delete this Entry?</h5>
-              
-            </div>
-            <div class="modal-footer">
-              <a href="{% url 'delete-entry' entry.pk %}"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes</button></a>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  {% with is_detail="DetailView" %}
+    {% include "entries/entry_view.html" with entry=entry foo=foo %}
+  {% endwith %}
 
       <div class="m-2">
         <a href="{% url 'new-entry' %}" class="btn btn-primary rounded-pill position-fixed bottom-0 end-0 m-4 p-3"> <i class="fa-solid fa-plus"></i>  Create Entry</a>

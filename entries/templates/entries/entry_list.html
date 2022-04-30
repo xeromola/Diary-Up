@@ -5,45 +5,9 @@
 
 
 {% if entries %}
+  {% comment %} Template Entry - passing Arguments {% endcomment %}
   {% for entry in entries %}
-  <div class="card m-4 ">
-      <div class="card-header card-title d-flex justify-content-between">
-          <div>
-              <h4>{{ entry.date_created }}</h4>
-          </div>
-          <div class="btn-group" role="group" aria-label="Basic example">
-              <a href="{% url 'detail-entry' entry.pk %}" class="btn btn-outline-dark"><i class="fa-solid fa-up-right-from-square"></i></a>
-              <a href="{% url 'update-entry' entry.pk %}" class="btn btn-outline-dark"><i class="fa-solid fa-pencil"></i></a>
-              <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#deleteConformation{{entry.pk}}"><i class="fa-solid fa-trash-can"></i></button>
-            </div>
-      </div>
-      <div class="card-body">
-          <h4>
-              {{ entry.title }}
-          </h4>
-        <p class="card-text entry-element">
-          {{ entry.content|safe }}
-        </p>
-      </div>
-  </div>
-
-    <!-- Modal for Delete Confirmation -->
-    <div class="modal fade" id="deleteConformation{{entry.pk}}" tabindex="-1" aria-labelledby="deleteConformationLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <h5 class="modal-title" id="deleteConformationLabel">Are you sure you want to Delete this Entry?</h5>
-            
-          </div>
-          <div class="modal-footer">
-            <a href="{% url 'delete-entry' entry.pk %}"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yes</button></a>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
+    {% include "entries/entry_view.html" with entry=entry %}
   {% endfor %}
 {% else %}
 <div class="bg-light p-5 rounded m-5">
@@ -51,11 +15,12 @@
 </div>
 {% endif %}
 
+{% comment %} Button For New Entry {% endcomment %}
 <div class="m-2">
   <a href="{% url 'new-entry' %}" class="btn btn-primary rounded-pill position-fixed bottom-0 end-0 m-4 p-3"> <i class="fa-solid fa-plus"></i>  Create Entry</a>
 </div>
 
-
+  {% comment %} Pagination {% endcomment %}
   {% if is_paginated %}
     <ul class="pagination mx-4 d-flex justify-content-center">
       {% if page_obj.has_previous %}

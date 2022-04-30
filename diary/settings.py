@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'diary-up.herokuapp.com']
 
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'entries.apps.EntriesConfig',
     'whitenoise.runserver_nostatic',
     'widget_tweaks',
+    'taggit',
 ]
 
 MIDDLEWARE = [
