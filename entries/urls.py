@@ -5,12 +5,11 @@ from .views import (
     EntryDeleteView,
     EntryUpdateView,
     EntryDetailView,
-    TagListView
 )
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
-    path("tags/<slug:tag_slug>/", TagListView.as_view(), name="posts_by_tags"),
+    path("tags/<slug:tag_slug>/", EntryListView.as_view(), name="posts_by_tags"),
     path("new-entry", login_required(EntryCreateView.as_view()), name="new-entry"),
     path("", login_required(EntryListView.as_view()), name="list-entries"),
     path("update-entry/<int:pk>",

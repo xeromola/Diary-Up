@@ -29,20 +29,13 @@ class EntryListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
+        if 'tag_slug' in self.kwargs:
+            return Entry.objects.filter(user=self.request.user,
+                                        tags__slug=self.kwargs.get('tag_slug')
+                                        ).order_by('-date_created', '-time_created')
+
         return Entry.objects.filter(
             user=self.request.user
-        ).order_by('-date_created', '-time_created')
-
-
-class TagListView(ListView):
-    model = Entry
-    context_object_name = 'entries'
-    template_name = "entries/entry_list.html"
-    paginate_by = 3
-
-    def get_queryset(self):
-        return Entry.objects.filter(
-            tags__slug=self.kwargs.get('tag_slug')
         ).order_by('-date_created', '-time_created')
 
 
